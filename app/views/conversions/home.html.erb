@@ -1,2 +1,5 @@
-<h1>Conversions#home</h1>
-<p>Find me in app/views/conversions/home.html.erb</p>
+<% start_date = Date.parse "2000-01-01 06:00:00" %>
+<% todays_date = Date.today %>
+
+<h1>Convert Your USD to Euro</h1>
+<p>From any date within the last <%= (todays_date - start_date).to_i %> days!</p>
