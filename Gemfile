@@ -7,6 +7,8 @@ end
 
 # using MongoDB for simple storage
 gem 'mongoid'
+# gem to color our console messages
+gem 'rainbow'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
