@@ -1,10 +1,25 @@
 require 'rails_helper'
+require 'rake'
 
 RSpec.describe ExchangeRateConverter, type: :model do
+  before do
+    Exchange.find('2016-12-27').delete
+    Exchange.find('2016-12-23').delete
+    Exchange.find('2016-12-22').delete
+    Exchange.find('2016-12-21').delete
+    Exchange.create(_id: '2016-12-27', rate: 1.0445)
+    Exchange.create(_id: '2016-12-23', rate: 1.0446)
+    Exchange.create(_id: '2016-12-22', rate: 1.0444)
+    Exchange.create(_id: '2016-12-21', rate: 1.0421)
+  end
 
-  describe '#get_most_recent_exchange(date)' do
+  describe '#get_most_recent_exchange' do
     it "returns the most recent valid exchange rate by date" do
-      expect(ExchangeRateConverter.get_most_recent_exchange(Date.parse('2016-12-26'))).to eq(Exchange.find('2016-12-23'))
+      expect(ExchangeRateConverter.get_most_recent_exchange(Date.parse('2016-12-26'), 0)).to eq(Exchange.find('2016-12-23'))
+    end
+
+    it "timeout: returns nil if it goes back 7 days without finding a valid date" do
+      expect(ExchangeRateConverter.get_most_recent_exchange(Date.parse('2017-1-26'), 0)).to eq(nil)
     end
   end
 
