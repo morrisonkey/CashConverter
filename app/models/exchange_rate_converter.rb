@@ -1,7 +1,11 @@
 class ExchangeRateConverter
 
   def self.convert(usd, date)
-    usd / get_most_recent_exchange(date).rate
+    amount = (usd / get_most_recent_exchange(date).rate).round(4)
+    puts
+    puts "On #{date} $#{usd} was equal to €#{amount}"
+    puts
+    amount
   end
 
   def self.get_most_recent_exchange(date)
