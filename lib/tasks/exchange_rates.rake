@@ -12,7 +12,11 @@ namespace :exchange_rates do
     url = "#{root}/quickviewexport.do?SERIES_KEY=120.EXR.D.USD.EUR.SP00.A&type=csv"
 
     # because the keyword is stored as a date we can grab the lastest date our data was retrieved by simply calling the last of our Exchanges
-    latest_date = Exchange.all.last._id
+    if Exchange.first.nil?
+      latest_date = "1999-12-31"
+    else
+      latest_date = Exchange.all.last._id
+    end
 
     csv_data = open(url)
     csv_rows = CSV.parse(csv_data.read)

@@ -7,6 +7,7 @@ end
 
 # using MongoDB for simple storage
 gem 'mongoid'
+gem 'mongoid-rspec'
 # gem to color our console messages
 gem 'rainbow'
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Exchange, type: :model do
   before(:all) do
-    @xchange = Exchange.new(_id: '2011-12-25', rate: 1.43)
+    @xchange = Exchange.new(_id: '2010-12-25', rate: 1.43)
     @xchange.save
   end
 
@@ -11,15 +11,16 @@ RSpec.describe Exchange, type: :model do
   end
 
   it 'can hold an _id and rate' do
-    expect(@xchange._id).to eq('2011-12-25')
+    expect(@xchange._id).to eq('2010-12-25')
     expect(@xchange.rate).to eq(1.43)
   end
 
   it 'can be saved to the database' do
-    expect(Exchange.find('2011-12-25').rate).to eq(1.43)
+    expect(Exchange.find('2010-12-25')).to eq(@xchange)
   end
 
   after(:all) do
     @xchange.delete
   end
+
 end
