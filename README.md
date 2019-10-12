@@ -36,6 +36,6 @@ This app will refresh data for USD to Euro conversion rates dating back to Janua
 
 
 
-```Copywrite: Keyan Bagheri 2017
-All code written by Keyan Bagheri (github.com/keyanbagheri)
+```Copywrite: Morrison Key 2017
+All code written by Morrison Key (github.com/morrison-key)
 ```
